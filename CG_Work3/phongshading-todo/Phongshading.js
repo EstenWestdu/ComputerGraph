@@ -31,7 +31,7 @@ var eyeFov;//透视俯仰角，越大则图的投影越小;
 var framebuffer, renderbuffer;
 var cubeTexture, planeTexture;
 // fog mode: 0=linear,1=exp,2=exp2
-var fogMode = 2; // 默认使用 exp2，使雾效更明显
+var fogMode = 0; // 默认使用线性雾
 // fog density (global, adjustable)
 var fogDensity = 0.08; // 增强默认值，能更明显看到雾
 
