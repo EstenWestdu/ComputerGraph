@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html style="background-color: rgba(188,190,192,1.0);">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>计算机图形学:明暗着色和纹理贴图</title>
+    <style type="text/css">
+        body{
+            margin: 5px;
+            width: calc(100vw - 10px);
+            height: calc(100vh - 40px);
+        }
+    </style>    
+	<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+	<script type="text/javascript" src="./Common/initShaders2.js"></script>
+	<script type="text/javascript" src="./Common/MVnew.js"></script>
+	<script type="text/javascript" src="./Models.js"></script>
+	<script type="text/javascript" src="./configMaterialParameters.js"></script>
+	<script type="text/javascript" src="./configTexture.js"></script>
+    <script type="text/javascript" src="./Phongshading.js"></script>
+</head>
+<body>
+    <div style="display:flex; justify-content:space-between; line-height:30px; color:black; font-size:1vw;">
+		<text>C/V-点光源/平行光源</text>
+		<text>Y/U-拉大/缩小光源距离</text>
+		<text>WS/AD-光源绕X/Y轴旋转</text>
+		<text>I/K/J/L/,/.移动摄像机</text>
+        <text>M/N-投影角zoomin/zoomout</text>
+        <text>空格-重置复位</text>        
+    </div>
+        <!-- Fog UI: current mode and a button to cycle modes -->
+        <div style="margin:6px; color:black; font-size:14px;">
+                雾模式: <span id="fogModeDisplay">Linear</span>
+                <button id="fogCycleBtn" style="margin-left:8px;">切换雾模式 (F)</button>
+        </div>
+        <div style="margin:6px; color:black; font-size:14px;">
+            雾强度: <span id="fogDensityDisplay">0.04</span>
+            <button id="fogDecBtn" style="margin-left:8px;">-</button>
+            <button id="fogIncBtn" style="margin-left:4px;">+</button>
+            <span style="margin-left:12px; font-size:12px; color:#333">快捷键: '[' ']' 调整强度</span>
+        </div>
+	<canvas id="canvas">Oops ... your browser doesn't support the HTML5 canvas element</canvas>
+    <img id = "cubeTexImage" src = "container.png" hidden></img>
+    <img id = "planeTexImage" src = "wood.png" hidden></img>
+    <!--
+        文件上传控件（已注释）：
+        - 用途：允许用户从本地选择图片并通过 `useTexture(this)` 回调将其作为纹理载入。
+        - 风险/说明：当前没有在代码中实现 `useTexture` 函数，若直接取消注释会导致页面报错。
+        若想启用，请在 `configTexture.js` 或其它脚本中实现 `useTexture(fileInput)`，
+        将选中文件读取为图像并调用 `configureTexture` 更新纹理。
+    -->
+
+    <!--input id="fileBtn" type="file" accept="image/*" onchange="useTexture(this)" style="display: none;"/-->
+</body>
+</html>
