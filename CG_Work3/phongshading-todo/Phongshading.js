@@ -35,6 +35,8 @@ var fogMode = 0; // 默认使用线性雾
 // fog density (global, adjustable)
 var fogDensity = 0.08; // 增强默认值，能更明显看到雾
 
+var bgColor = vec3(0.737255, 0.745098, 0.752941); // 
+
 function setFogDensity(d) {
 	fogDensity = Math.max(0.0, d);
 	var disp = document.getElementById('fogDensityDisplay');
@@ -95,7 +97,7 @@ window.onload = function() {
 
 	gl.enable(gl.DEPTH_TEST); //开启深度缓存
     gl.depthFunc(gl.LEQUAL);
-	gl.clearColor(0.737255, 0.745098, 0.752941, 1.0); //设置背景色 
+	gl.clearColor(bgColor[0], bgColor[1], bgColor[2], 1.0);//设置背景色 
 	canvas.width = document.body.clientWidth;    
     canvas.height = document.body.clientHeight;   
 	gl.viewport( (canvas.width-canvas.height)/2, 0, canvas.height, canvas.height);
@@ -240,7 +242,7 @@ function render(){
 	gl.uniform3fv( gl.getUniformLocation( program, "viewPos" ), flatten(eyePos));
 
 	// --- Fog uniforms (simple, per-frame) ---
-	gl.uniform3fv(gl.getUniformLocation(program, "fogColor"), flatten([1.0, 0, 0]));
+	gl.uniform3fv(gl.getUniformLocation(program, "fogColor"), flatten(bgColor));
 	// linear fog defaults (used when fogMode==0)
 	gl.uniform1f(gl.getUniformLocation(program, "fogStart"), 8.0);
 	gl.uniform1f(gl.getUniformLocation(program, "fogEnd"), 30.0);
